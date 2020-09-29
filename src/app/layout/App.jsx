@@ -13,8 +13,6 @@ import TestArea from '../../Components/testarea/textarea';
 
 
 
-
-
 class App extends Component {
   render(){
  return ( 
@@ -27,7 +25,7 @@ class App extends Component {
        <Fragment>
          <Navbar />
          <Container className="main">
-           <Route path='/events' component={EventDashBoard} />
+           <Route exact path='/events' component={EventDashBoard} />
            <Route path='/events/:id' component={EventDetailedPage} />
            <Route path='/people' component={PeopleDashboard} />
            <Route path='/profile/:id' component={UserDetailedPage} />

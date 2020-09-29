@@ -57,13 +57,13 @@ const initialState = [
 
 
 const createEvent = (state , payload) => {
-return [...state , payload]
+return [...state , payload.event]
 }
 
 
 const updateEvent = (state, payload) => {
     return [
-        ...state.filter(event => event.id !== payload.event.id) , payload
+        ...state.filter(event => event.id !== payload.event.id) , payload.event 
     ]
 }
 

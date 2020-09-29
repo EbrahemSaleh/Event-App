@@ -21,11 +21,11 @@ import SignedInMenu from '../menus/SignedInMenu';
     return (
            <Menu inverted fixed="top">
              <Container>
-               <Menu.Item as={NavLink} to="/" header>
+               <Menu.Item as={NavLink} exact to="/" header>
                  <img src="assets/images/logo.png" alt="logo" />
                  Re-vents
                </Menu.Item>
-          <Menu.Item as={NavLink} to='/events' name="Events" />
+          <Menu.Item as={NavLink} exact to='/events' name="Events" />
           <Menu.Item as={NavLink} to='/people' name="People" />
           <Menu.Item as={NavLink} to='/test' name="Test" />
                <Menu.Item>

@@ -11,8 +11,8 @@ const mapState = (state) => ({
 const actions = {
   incrementCounter,
   decrementCounter
-
 }
+
 class  TestArea extends Component {
 
   render(){ 

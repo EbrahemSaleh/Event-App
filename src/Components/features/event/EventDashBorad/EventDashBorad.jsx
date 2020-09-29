@@ -4,10 +4,17 @@ import { connect } from 'react-redux';
 import EventList from '../EventList/EventList';
 import EventForm from '../EventForm/EventForm';
 import cuid from 'cuid';
+import { createEvent, updateEvent, deleteEvent } from '../eventActions';
 
-const mapState = (state) =>( {
-  events : state.events
-})
+const mapState = (state) => ({
+  events: state.events
+});
+
+const actions = {
+  createEvent,
+  updateEvent,
+  deleteEvent
+}
 
 
 class EventDashBroad extends Component {
@@ -34,9 +41,9 @@ class EventDashBroad extends Component {
   handleCreateEvent = (newEvent) => {
     newEvent.id = cuid();
     newEvent.hostPhotoURL = './assets/images/user.png'
-
-    this.setState( ({events}) => (  {
-      events: [...events , newEvent],
+    this.props.createEvent(newEvent);
+    
+    this.setState( () => (  {
       isOpen : false
     }))
   }
@@ -49,24 +56,15 @@ class EventDashBroad extends Component {
   }
 
   handleUpdateEvent = (updateEvent) => {
+    this.props.updateEvent(updateEvent)
     this.setState( ({events}) => ({
-      events : events.map(event => {
-        if(event.id === updateEvent.id){
-          return {...updateEvent}
-        }else{
-          return event 
-        }
-      }),
       isOpen : false,
       selectedEvent : null
     }))
   }
 
   handleDeleteEvent = (id)=> {
-    this.setState(({events}) => ({
-      events : events.filter(e => e.id !== id) 
-      
-    }))
+   this.props.deleteEvent(id)
   }
 
   render() {
@@ -100,4 +98,4 @@ class EventDashBroad extends Component {
   }
 }
 
-export default connect(mapState)(EventDashBroad);
+export default connect(mapState , actions)(EventDashBroad);
